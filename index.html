@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracy's English World | 트레이시 잉글리시 월드</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Jua (귀여운 포인트), Noto Sans KR (가독성 본문), Quicksand (영문 타이틀) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        display: ['"Quicksand"', '"Jua"', 'sans-serif'],
+                        cute: ['"Jua"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#F29191',
+                            light: '#FDE8E8',
+                            soft: '#FFF5F5',
+                            dark: '#D96B6B',
+                            border: '#FAD1D1'
+                        },
+                        pastel: {
+                            cream: '#FFFDFB',
+                            yellow: '#FFF4D2',
+                            yellowDark: '#F59E0B',
+                            pink: '#FDE8E8',
+                            pinkDark: '#F29191',
+                            mint: '#E3F6F0',
+                            mintDark: '#10B981',
+                            blue: '#E6F2FF',
+                            blueDark: '#3B82F6',
+                            purple: '#F3E8FF',
+                            text: '#374151',
+                            subtext: '#6B7280'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-pastel-cream text-pastel-text antialiased selection:bg-brand-light selection:text-brand-dark pb-20 md:pb-0">
+
+    <!-- 상단 네비게이션 바 -->
+    <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-brand-border shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- 로고 -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-[#F29191] to-[#F7B5B5] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-shapes text-lg"></i>
+                </div>
+                <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-gray-800">
+                    Tracy's <span class="text-[#F29191]">English</span> World
+                </span>
+            </a>
+
+            <!-- 데스크톱 메뉴 -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
+                <a href="#programs" class="hover:text-[#F29191] transition-colors">프로그램 안내</a>
+                <a href="#teacher" class="hover:text-[#F29191] transition-colors">강사 소개</a>
+                <a href="#gallery" class="hover:text-[#F29191] transition-colors">클래스 & 공간</a>
+                <a href="#location" class="hover:text-[#F29191] transition-colors">오시는 길</a>
+                <button onclick="openModal()" class="px-4 py-2 rounded-full bg-[#F29191] hover:bg-brand-dark text-white font-semibold shadow-sm transition-all transform hover:-translate-y-0.5">
+                    무료 레벨테스트 신청
+                </button>
+            </nav>
+
+            <!-- 모바일 메뉴 버튼 -->
+            <button id="mobile-menu-btn" aria-label="메뉴 열기" class="md:hidden p-2.5 rounded-xl bg-brand-light text-brand-dark hover:bg-brand-border transition-colors">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-brand-border px-4 pt-2 pb-5 space-y-2 shadow-lg">
+            <a href="#programs" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-brand-soft font-medium text-gray-700">📚 대표 프로그램</a>
+            <a href="#teacher" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-brand-soft font-medium text-gray-700">👩‍🏫 강사 소개</a>
+            <a href="#gallery" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-brand-soft font-medium text-gray-700">🏫 클래스 & 공간 둘러보기</a>
+            <a href="#location" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-brand-soft font-medium text-gray-700">📍 오시는 길 & 운영안내</a>
+        </div>
+    </header>
+
+    <!-- 1. 히어로 섹션 (맨 위 상호명 및 소개) -->
+    <section class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24 bg-gradient-to-b from-brand-light/85 via-brand-soft to-pastel-cream">
+        <!-- 배경 장식 원형 요소 -->
+        <div class="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-[#F29191]/25 blur-2xl pointer-events-none"></div>
+        <div class="absolute top-24 -right-12 w-64 h-64 rounded-full bg-amber-200/35 blur-2xl pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <!-- 상단 뱃지 -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-brand-border shadow-sm text-xs sm:text-sm font-semibold text-brand-dark mb-6">
+                <span class="w-2 h-2 rounded-full bg-[#F29191] animate-ping"></span>
+                포항 초곡지구 유·초등·중등기초 영어 전문학원
+            </div>
+
+            <!-- 상호명 -->
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 tracking-tight leading-tight mb-4">
+                Tracy's <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F29191] to-[#E06C6C]">English World</span>
+            </h1>
+            <p class="font-cute text-lg sm:text-xl text-[#F29191] mb-6">트레이시 잉글리시 월드</p>
+
+            <!-- 한 줄 소개 -->
+            <div class="max-w-2xl mx-auto bg-white/85 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-brand-border shadow-md mb-8">
+                <p class="text-base sm:text-xl font-medium text-gray-700 leading-relaxed break-keep">
+                    "영어가 공부가 아닌 <span class="bg-brand-light px-2 py-0.5 rounded-lg font-bold text-brand-dark">즐거운 놀이</span>가 되는 곳,<br class="hidden sm:inline">
+                    <span class="text-[#F29191] font-bold">Tracy's English World</span>에서 우리 아이의 첫 영어 세상을 열어주세요."
+                </p>
+            </div>
+
+            <!-- 상단 액션 버튼 -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                <button onclick="openModal()" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-[#F29191] hover:bg-brand-dark text-white font-bold text-base sm:text-lg shadow-lg shadow-[#F29191]/35 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sparkles"></i>
+                    1:1 무료 레벨테스트 예약하기
+                </button>
+                <a href="tel:010-1234-5678" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white hover:bg-brand-soft text-gray-700 font-bold text-base sm:text-lg border border-brand-border shadow-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone text-[#F29191]"></i>
+                    010-1234-5678
+                </a>
+            </div>
+
+            <!-- 특별 이벤트 배너 -->
+            <div class="mt-10 max-w-2xl mx-auto bg-white/90 border border-brand-border rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-sm text-gray-700 shadow-sm">
+                <span class="px-2.5 py-1 rounded-full bg-[#F29191] text-white text-xs font-bold shrink-0">SPECIAL EVENT</span>
+                <p class="font-medium break-keep">매달 마지막 주 금요일 오후 3시, <strong class="text-brand-dark">선착순 체험수업</strong> 운영 중!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 대표 프로그램 및 서비스 섹션 -->
+    <section id="programs" class="py-16 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold tracking-wider uppercase text-brand-dark bg-brand-light px-3 py-1 rounded-full">Curriculum</span>
+            <h2 class="font-cute text-3xl sm:text-4xl text-gray-800 mt-3 mb-3">아이의 눈높이에 맞춘 단계별 프로그램</h2>
+            <p class="text-sm sm:text-base text-gray-500 max-w-xl mx-auto break-keep">놀이로 시작해 탄탄한 문해력과 문법 실력까지, 연령과 수준에 딱 맞는 커리큘럼을 제공합니다.</p>
+        </div>
+
+        <div class="space-y-10">
+            <!-- 카테고리 1: 유아 · 초등 저학년 중심 -->
+            <div class="bg-brand-soft rounded-3xl p-6 sm:p-8 border border-brand-border">
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span class="w-10 h-10 rounded-2xl bg-[#F29191] text-white flex items-center justify-center font-bold text-lg shadow-sm">①</span>
+                    <div>
+                        <h3 class="font-cute text-xl sm:text-2xl text-gray-800">유아 · 초등 저학년 중심</h3>
+                        <p class="text-xs sm:text-sm text-brand-dark font-medium">놀이 · 파닉스 · 기초 회화</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- 프로그램 카드 1 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-brand-border/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-light text-[#F29191] flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-music"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-brand-soft text-brand-dark text-xs font-semibold">첫 영어 완성</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-1">펀펀 파닉스 & 스토리텔링</h4>
+                        <p class="text-xs font-display text-[#F29191] font-semibold mb-3">Fun Phonics & Storytelling</p>
+                        <p class="text-sm text-gray-600 leading-relaxed break-keep">
+                            알파벳 음가부터 원어민 발음까지, 동화와 노래로 즐겁게 익히는 첫 영어 완성 프로그램입니다.
+                        </p>
+                    </div>
+
+                    <!-- 프로그램 카드 2 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-brand-border/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold">100% 참여형</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-1">리틀 스피커 회화반</h4>
+                        <p class="text-xs font-display text-amber-500 font-semibold mb-3">Little Speaker Class</p>
+                        <p class="text-sm text-gray-600 leading-relaxed break-keep">
+                            영어 울렁증 ZERO! 일상 속 필수 표현을 입으로 먼저 떼는 100% 참여형 스피킹 수업입니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카테고리 2: 초등 전학년 · 중등 기초 중심 -->
+            <div class="bg-pastel-yellow/50 rounded-3xl p-6 sm:p-8 border border-amber-100">
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                    <span class="w-10 h-10 rounded-2xl bg-amber-400 text-white flex items-center justify-center font-bold text-lg shadow-sm">②</span>
+                    <div>
+                        <h3 class="font-cute text-xl sm:text-2xl text-gray-800">초등 전학년 · 중등 기초 중심</h3>
+                        <p class="text-xs sm:text-sm text-amber-700 font-medium">리딩 · 문법 · 실력 완성</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- 프로그램 카드 3 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-light text-[#F29191] flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-brand-soft text-brand-dark text-xs font-semibold">정독 · 다독</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-1">영어 원서 다독 & 리딩 클럽</h4>
+                        <p class="text-xs font-display text-[#F29191] font-semibold mb-3">English Reading & Book Club</p>
+                        <p class="text-sm text-gray-600 leading-relaxed break-keep">
+                            레벨별 맞춤 영어 원서 읽기를 통해 문해력과 어휘력을 동시에 키우는 정독·다독 프로그램입니다.
+                        </p>
+                    </div>
+
+                    <!-- 프로그램 카드 4 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-amber-100/80 hover:shadow-md transition-shadow">
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="w-12 h-12 rounded-2xl bg-pastel-mint text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-pen-nib"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-semibold">내신 기초 완성</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-800 mb-1">탄탄 영문법 & 서술형 마스터</h4>
+                        <p class="text-xs font-display text-emerald-600 font-semibold mb-3">Grammar & Writing Master</p>
+                        <p class="text-sm text-gray-600 leading-relaxed break-keep">
+                            내신 만점의 기초가 되는 핵심 문법과 영작 실력을 체계적으로 다지는 집중 학습반입니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카테고리 3: 특별 / 체험 서비스 -->
+            <div class="bg-gradient-to-r from-brand-light via-brand-soft to-pastel-yellow rounded-3xl p-6 sm:p-8 border border-brand-border shadow-sm relative overflow-hidden">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+                    <div class="space-y-2 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F29191] text-white text-xs font-bold">
+                            <i class="fa-solid fa-gift"></i> ③ 특별 / 체험 서비스 (신규 상담 시 추천!)
+                        </div>
+                        <h3 class="font-cute text-2xl sm:text-3xl text-gray-800 pt-1">
+                            1:1 맞춤 영어 레벨테스트 및 학습 로드맵 컨설팅
+                        </h3>
+                        <p class="text-sm sm:text-base text-gray-700 leading-relaxed break-keep">
+                            현재 아이의 영어 감각과 수준을 정확히 진단하고, 향후 1년 맞춤형 학습 방향을 제안해 드립니다.
+                        </p>
+                        <p class="text-xs sm:text-sm font-bold text-brand-dark">
+                            ※ 매월 선착순 5명 무료 혜택 제공
+                        </p>
+                    </div>
+                    <button onclick="openModal()" class="w-full md:w-auto shrink-0 px-6 py-4 rounded-2xl bg-[#F29191] hover:bg-brand-dark text-white font-bold shadow-md transition-all transform hover:scale-105">
+                        선착순 무료 신청하기 →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 강사 소개 섹션 -->
+    <section id="teacher" class="py-16 sm:py-20 bg-brand-soft border-y border-brand-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-wider uppercase text-brand-dark bg-brand-light px-3 py-1 rounded-full">Director & Teacher</span>
+                <h2 class="font-cute text-3xl sm:text-4xl text-gray-800 mt-3">아이들의 마음을 여는 원장 직강</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-md border border-brand-border flex flex-col md:flex-row items-center gap-8">
+                <!-- 원장님 프로필 이미지 -->
+                <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl overflow-hidden shrink-0 border-4 border-brand-light shadow-inner bg-brand-soft">
+                    <img 
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/FDE8E8/D96B6B?text=Teacher+Tracy';"
+                        alt="Tracy 원장님 프로필" 
+                        class="w-full h-full object-cover"
+                    >
+                </div>
+
+                <!-- 원장님 소개 텍스트 -->
+                <div class="flex-1 text-center md:text-left space-y-4">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-brand-light text-brand-dark text-xs font-bold mb-2">Tracy's English World 대표 원장</span>
+                        <h3 class="font-cute text-2xl sm:text-3xl text-gray-800">Tracy 원장님 <span class="text-base font-sans font-normal text-gray-500">이수진 원장</span></h3>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-600 leading-relaxed break-keep">
+                        "아이들에게 첫 영어는 '외워야 하는 숙제'가 아니라 '세상과 소통하는 즐거운 도구'여야 합니다. 
+                        아이 한 명 한 명의 기질과 속도를 존중하며, 스스로 영어로 말하고 책을 펼치는 기쁨을 선물하겠습니다."
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-left text-xs sm:text-sm text-gray-700">
+                        <div class="flex items-center gap-2 bg-brand-soft p-2.5 rounded-xl border border-brand-border">
+                            <i class="fa-solid fa-circle-check text-[#F29191]"></i>
+                            <span>유·초등 영어교육 및 파닉스 지도 전문</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-brand-soft p-2.5 rounded-xl border border-brand-border">
+                            <i class="fa-solid fa-circle-check text-[#F29191]"></i>
+                            <span>미국 원서 리딩 & 문해력 코칭 자격</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-brand-soft p-2.5 rounded-xl border border-brand-border">
+                            <i class="fa-solid fa-circle-check text-[#F29191]"></i>
+                            <span>소수정예 밀착 케어 & 정기 학부모 피드백</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-brand-soft p-2.5 rounded-xl border border-brand-border">
+                            <i class="fa-solid fa-circle-check text-[#F29191]"></i>
+                            <span>초등~중등 내신 서술형 연계 로드맵 설계</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 학원 클래스 사진 & 내부 공간 갤러리 -->
+    <section id="gallery" class="py-16 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold tracking-wider uppercase text-brand-dark bg-brand-light px-3 py-1 rounded-full">Class & Space</span>
+            <h2 class="font-cute text-3xl sm:text-4xl text-gray-800 mt-3 mb-3">즐거운 클래스 & 아늑한 학습 공간</h2>
+            <p class="text-sm sm:text-base text-gray-500 break-keep">아이들이 매일 오고 싶어 하는 밝고 쾌적한 Tracy's English World의 모습을 만나보세요.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- 사진 1: 대표적인 학원 클래스 사진 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-sm border border-brand-border/60 hover:shadow-md transition-all">
+                <div class="aspect-[16/10] overflow-hidden bg-brand-light">
+                    <img 
+                        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x500/FDE8E8/D96B6B?text=Fun+Phonics+%26+Speaking+Class';"
+                        alt="즐거운 소수정예 영어 클래스" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-bold text-brand-dark bg-brand-light px-2.5 py-1 rounded-full">CLASS 01</span>
+                    <h3 class="font-bold text-lg text-gray-800 mt-2">소수정예 참여형 스피킹 클래스</h3>
+                    <p class="text-sm text-gray-500 mt-1 break-keep">선생님과 눈을 맞추며 게임, 노래, 역할극으로 자연스럽게 영어를 발화하는 시간입니다.</p>
+                </div>
+            </div>
+
+            <!-- 사진 2: 원서 리딩 & 스토리텔링 클래스 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-sm border border-brand-border/60 hover:shadow-md transition-all">
+                <div class="aspect-[16/10] overflow-hidden bg-pastel-yellow">
+                    <img 
+                        src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x500/FFF4D2/B45309?text=English+Storytelling+Class';"
+                        alt="원서 리딩 및 스토리텔링 수업" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-bold text-amber-700 bg-pastel-yellow px-2.5 py-1 rounded-full">CLASS 02</span>
+                    <h3 class="font-bold text-lg text-gray-800 mt-2">원서 다독 & 스토리텔링 수업</h3>
+                    <p class="text-sm text-gray-500 mt-1 break-keep">아이의 흥미와 리딩 지수에 맞춘 영어 원서를 함께 읽고 생각을 나누며 문해력을 키웁니다.</p>
+                </div>
+            </div>
+
+            <!-- 사진 3: 학원 내부 공간 (영어 원서 북카페 존) -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-sm border border-brand-border/60 hover:shadow-md transition-all">
+                <div class="aspect-[16/10] overflow-hidden bg-pastel-mint">
+                    <img 
+                        src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x500/E3F6F0/047857?text=English+Book+Library+Zone';"
+                        alt="영어 원서 라이브러리 공간" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-bold text-emerald-600 bg-pastel-mint px-2.5 py-1 rounded-full">SPACE 01</span>
+                    <h3 class="font-bold text-lg text-gray-800 mt-2">영어도서관 & 북카페 공간</h3>
+                    <p class="text-sm text-gray-500 mt-1 break-keep">단계별 미국·영국 원서와 오디오북이 구비되어 있어 언제든 편안하게 책과 친해질 수 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- 사진 4: 학원 내부 공간 (파스텔 톤 아늑한 강의실) -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-sm border border-brand-border/60 hover:shadow-md transition-all">
+                <div class="aspect-[16/10] overflow-hidden bg-brand-soft">
+                    <img 
+                        src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x500/FFF5F5/D96B6B?text=Bright+Pastel+Classroom';"
+                        alt="밝고 쾌적한 파스텔 톤 강의실" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    >
+                </div>
+                <div class="p-5">
+                    <span class="text-xs font-bold text-brand-dark bg-brand-light px-2.5 py-1 rounded-full">SPACE 02</span>
+                    <h3 class="font-bold text-lg text-gray-800 mt-2">밝고 안전한 파스텔 톤 강의실</h3>
+                    <p class="text-sm text-gray-500 mt-1 break-keep">아이들의 정서적 안정감을 높이는 부드러운 파스텔 인테리어와 친환경 학습 환경을 갖추었습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 오시는 길 & 운영 안내 섹션 -->
+    <section id="location" class="py-16 sm:py-20 bg-brand-soft border-t border-brand-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-wider uppercase text-brand-dark bg-brand-light px-3 py-1 rounded-full">Location & Hours</span>
+                <h2 class="font-cute text-3xl sm:text-4xl text-gray-800 mt-3">오시는 길 및 운영 안내</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border border-brand-border grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- 지도 영역 (인터랙티브 약도 및 지도 연동 버튼) -->
+                <div class="rounded-2xl overflow-hidden border border-brand-border bg-brand-soft relative h-72 sm:h-80 flex flex-col items-center justify-center p-6 text-center">
+                    <!-- 배경 패턴 SVG -->
+                    <svg class="absolute inset-0 w-full h-full opacity-45 pointer-events-none" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 80 H400 M0 210 H400 M110 0 V300 M290 0 V300" stroke="#FAD1D1" stroke-width="14"/>
+                        <path d="M0 80 H400 M0 210 H400 M110 0 V300 M290 0 V300" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6 6"/>
+                        <circle cx="200" cy="145" r="55" fill="#FDE8E8" fill-opacity="0.8"/>
+                    </svg>
+
+                    <div class="relative z-10 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-md border border-brand-border max-w-xs w-full">
+                        <div class="w-12 h-12 rounded-full bg-[#F29191] text-white flex items-center justify-center mx-auto mb-2 shadow-sm animate-bounce">
+                            <i class="fa-solid fa-location-dot text-xl"></i>
+                        </div>
+                        <p class="font-cute text-lg text-gray-800">Tracy's English World</p>
+                        <p class="text-xs sm:text-sm text-gray-600 mt-1">경북 포항시 북구 흥해읍 초곡지구로</p>
+                        <div class="mt-4 flex gap-2 justify-center">
+                            <a href="https://map.naver.com/p/search/%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%ED%9D%A5%ED%95%B4%EC%9D%8D%20%EC%B4%88%EA%B3%A1%EC%A7%80%EA%B5%AC%EB%A1%9C" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition-colors">
+                                네이버 지도
+                            </a>
+                            <a href="https://map.kakao.com/?q=%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%B6%81%EA%B5%AC%20%ED%9D%A5%ED%95%B4%EC%9D%8D%20%EC%B4%88%EA%B3%A1%EC%A7%80%EA%B5%AC%EB%A1%9C" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 px-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-gray-900 text-xs font-bold transition-colors">
+                                카카오맵
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 상세 정보 리스트 -->
+                <div class="space-y-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-2xl bg-brand-light text-[#F29191] flex items-center justify-center shrink-0 text-lg">
+                            <i class="fa-solid fa-map-pin"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-base">학원 위치</h4>
+                            <p class="text-sm text-gray-600 mt-0.5">포항시 북구 흥해읍 초곡지구로</p>
+                            <button onclick="copyText('포항시 북구 흥해읍 초곡지구로', '주소가 복사되었습니다!')" class="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-brand-dark hover:text-[#F29191]">
+                                <i class="fa-regular fa-copy"></i> 주소 복사하기
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-2xl bg-pastel-yellow text-amber-600 flex items-center justify-center shrink-0 text-lg">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-base">영업 시간</h4>
+                            <p class="text-sm text-gray-600 mt-0.5">월요일 ~ 금요일 <strong>13:00 ~ 19:00</strong></p>
+                            <p class="text-xs text-gray-400 mt-0.5">주말 및 공휴일 휴무 (방문 상담 시 사전 예약 권장)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-2xl bg-brand-light text-[#F29191] flex items-center justify-center shrink-0 text-lg">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-base">전화 문의</h4>
+                            <p class="text-base font-bold text-brand-dark mt-0.5">010-1234-5678</p>
+                            <button onclick="copyText('010-1234-5678', '전화번호가 복사되었습니다!')" class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand-dark hover:text-[#F29191]">
+                                <i class="fa-regular fa-copy"></i> 번호 복사하기
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-2xl bg-pastel-mint text-emerald-600 flex items-center justify-center shrink-0 text-lg">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-base">특별 체험수업 안내</h4>
+                            <p class="text-sm text-gray-600 mt-0.5 break-keep">매달 마지막 주 금요일 오후 3시, 선착순 체험수업 운영</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 푸터 및 맨 아래 문의하기 CTA 섹션 -->
+    <footer class="bg-white border-t border-brand-border pt-14 pb-24 md:pb-14 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <div class="inline-block p-6 rounded-3xl bg-brand-soft border border-brand-border">
+                <h3 class="font-cute text-2xl sm:text-3xl text-gray-800 mb-2">
+                    우리 아이 첫 영어, 지금 부담 없이 상담해 보세요!
+                </h3>
+                <p class="text-sm text-gray-600 mb-5 break-keep">
+                    1:1 무료 레벨테스트(선착순 5명) 및 마지막 주 금요일 체험수업 문의 환영합니다.
+                </p>
+                <!-- 맨 아래 메인 문의 버튼 -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#F29191] hover:bg-brand-dark text-white font-bold text-lg shadow-lg shadow-[#F29191]/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        상담 및 체험수업 문의하기
+                    </button>
+                    <a href="tel:010-1234-5678" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-brand-light text-brand-dark border border-brand-border font-bold text-lg shadow-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i>
+                        바로 전화하기
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-6 text-xs text-gray-400 space-y-1">
+                <p class="font-bold text-gray-600 text-sm">Tracy's English World (트레이시 잉글리시 월드)</p>
+                <p>주소: 포항시 북구 흥해읍 초곡지구로 | 운영시간: 월~금 13:00 ~ 19:00 | 문의: 010-1234-5678</p>
+                <p class="pt-2">&copy; 2026 Tracy's English World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 모바일 화면 맨 아래 고정 문의 바 -->
+    <div class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-brand-border p-3 flex gap-2.5 shadow-[0_-4px_15px_rgba(0,0,0,0.06)]">
+        <a href="tel:010-1234-5678" class="flex-1 py-3.5 rounded-xl bg-brand-light active:bg-brand-border text-brand-dark font-bold text-sm flex items-center justify-center gap-2 shadow-sm">
+            <i class="fa-solid fa-phone"></i>
+            전화 문의
+        </a>
+        <button onclick="openModal()" class="flex-[1.4] py-3.5 rounded-xl bg-[#F29191] active:bg-brand-dark text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm">
+            <i class="fa-solid fa-comment-dots"></i>
+            상담 / 체험 문의하기
+        </button>
+    </div>
+
+    <!-- 상담 및 체험수업 문의 모달 -->
+    <div id="inquiry-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-brand-border relative animate-[fadeIn_0.2s_ease-out]">
+            <button onclick="closeModal()" aria-label="닫기" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-5">
+                <span class="px-3 py-1 rounded-full bg-brand-light text-brand-dark text-xs font-bold">Tracy's English World</span>
+                <h3 class="font-cute text-2xl text-gray-800 mt-2">간편 상담 & 체험 예약</h3>
+                <p class="text-xs text-gray-500 mt-1">남겨주시면 영업시간(13:00~19:00) 내 빠르게 연락드립니다.</p>
+            </div>
+
+            <form id="inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">아이 연령 / 학년</label>
+                    <select required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-brand-soft/50 text-sm focus:outline-none focus:border-[#F29191]">
+                        <option value="">선택해 주세요</option>
+                        <option value="유아 (5~7세)">유아 (5~7세)</option>
+                        <option value="초등 저학년 (1~3학년)">초등 저학년 (1~3학년)</option>
+                        <option value="초등 고학년 (4~6학년)">초등 고학년 (4~6학년)</option>
+                        <option value="중등 기초">중등 기초</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">희망 프로그램 / 문의 유형</label>
+                    <select required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-brand-soft/50 text-sm focus:outline-none focus:border-[#F29191]">
+                        <option value="1:1 무료 레벨테스트 (선착순 5명)">1:1 무료 레벨테스트 & 로드맵 컨설팅</option>
+                        <option value="마지막 주 금요일 체험수업">매달 마지막 주 금요일 오후 3시 체험수업</option>
+                        <option value="펀펀 파닉스 & 스토리텔링">펀펀 파닉스 & 스토리텔링</option>
+                        <option value="리틀 스피커 회화반">리틀 스피커 회화반</option>
+                        <option value="영어 원서 다독 & 리딩 클럽">영어 원서 다독 & 리딩 클럽</option>
+                        <option value="탄탄 영문법 & 서술형 마스터">탄탄 영문법 & 서술형 마스터</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">학부모님 연락처</label>
+                    <input type="tel" required placeholder="010-0000-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-brand-soft/50 text-sm focus:outline-none focus:border-[#F29191]">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">궁금한 점 (선택)</label>
+                    <textarea rows="2" placeholder="아이의 영어 학습 경험이나 희망 상담 시간을 적어주세요." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-brand-soft/50 text-sm focus:outline-none focus:border-[#F29191]"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-[#F29191] hover:bg-brand-dark text-white font-bold text-base shadow-md transition-all">
+                    문의 신청 완료하기
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 알림 토스트 메시지 박스 (alert 대신 사용) -->
+    <div id="toast-box" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2.5 px-5 py-3.5 rounded-2xl bg-gray-800 text-white text-sm font-medium shadow-xl">
+        <i class="fa-solid fa-circle-check text-[#F29191] text-base"></i>
+        <span id="toast-message">처리가 완료되었습니다.</span>
+    </div>
+
+    <script>
+        // 모바일 메뉴 토글
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // 문의 모달 열기 / 닫기
+        const modal = document.getElementById('inquiry-modal');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // 모달 바깥 영역 클릭 시 닫기
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // 토스트 메시지 표시 함수
+        let toastTimeout;
+        function showToast(message) {
+            const toastBox = document.getElementById('toast-box');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            
+            toastBox.classList.remove('hidden');
+            toastBox.classList.add('flex');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toastBox.classList.add('hidden');
+                toastBox.classList.remove('flex');
+            }, 3000);
+        }
+
+        // 문의 폼 제출 처리
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            closeModal();
+            event.target.reset();
+            showToast('상담 신청이 접수되었습니다! 원장님이 곧 연락드리겠습니다.');
+        }
+
+        // 클립보드 복사 함수 (execCommand 활용)
+        function copyText(text, successMessage) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMessage);
+            } catch (err) {
+                showToast('복사에 실패했습니다. 직접 선택해 복사해 주세요.');
+            }
+            document.body.removeChild(tempInput);
+        }
+    </script>
+</body>
+</html>
